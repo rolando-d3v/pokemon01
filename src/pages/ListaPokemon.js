@@ -14,7 +14,6 @@ function ListaPokemon() {
   useEffect(() => {
     async function fetchData() {
       let response = await getAllPokemon(initialUrl);
-      console.log(response);
       setNextUrl(response.next);
       setPrevtUrl(response.previous);
       await loadingPokemon(response.results);
@@ -56,22 +55,22 @@ function ListaPokemon() {
   return (
     <div className="App">
       {loading ? (
-        <div className="d-flex justify-content-center align-items-center "  >
-          <Spinner animation="border" role="status"> </Spinner> 
-          <span>  Loading...</span>
+        <div className="d-flex justify-content-center align-items-center ">
+          <Spinner animation="border" role="status">
+            {" "}
+          </Spinner>
+          <span> Loading...</span>
         </div>
       ) : (
         <React.Fragment>
-          <div className="container">
-            <div>
-              <button onClick={prev}>Regresar</button>
-              <button onClick={next}>Siguiente</button>
-            </div>
-            <div className="row">
-              {pokemonData.map((pokemon, i) => (
-                <CardPokemon key={i} pokemon={pokemon} />
-              ))}
-            </div>
+          <div>
+            <button onClick={prev}>Regresar</button>
+            <button onClick={next}>Siguiente</button>
+          </div>
+          <div className="row">
+            {pokemonData.map((pokemon, i) => (
+              <CardPokemon key={i} pokemon={pokemon} />
+            ))}
           </div>
         </React.Fragment>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
@@ -13,11 +13,14 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
         <Navigation />
-        <Switch>
+        <div  className="container" >
+        <Switch >
           <Route exact={true} path="/listapokemon" component={ListaPokemon} />
           <Route exact={true} path="/buscar" component={Buscar} />
           <Route exact={true} path="/" component={Home} />
         </Switch>
+
+        </div>
       </BrowserRouter>
     </React.Fragment>
   );
